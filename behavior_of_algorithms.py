@@ -9,7 +9,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 
-def graph (path=None, algorithms=None, dataname=None):
+def graph_behavior(path=None, algorithms=None, dataname=None):
     if path is None or algorithms is None or dataname is None:
         return
     if path[-1] != '/':
