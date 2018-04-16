@@ -18,15 +18,15 @@ def graph_behavior(path=None, algorithms=None, dataname=None):
     file_path = path.split('/')
     file_path.extend(['', ''])
     for algorithm in algorithms:
+        file_path[-2] = algorithm
+        file_path[-1] = algorithm + dataname + '.txt'
         algorithm_results = []
-        path[-2] = algorithm
-        path[-1] = algorithm + dataname + '.txt'
         file = open('/'.join(file_path), 'r')
         for line in file:
             algorithm_results.append(list(map(float, line.replace(',', '.')\
                                               .replace('\n', '').split(' '))))
         file.close()
-        new_file_path = path.insert(-1, 'USED')
+        new_file_path = file_path.insert(-1, 'USED')
         os.rename('/'.join(file_path), '/'.join(new_file_path))
         algorithm_results = np.array(algorithm_results)
         algorithm_results = np.mean(algorithm_results, axis=0)
