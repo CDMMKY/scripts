@@ -27,6 +27,8 @@ def parse_file(path=None, mode='bagging', n_populations=10):
     
     if mode == 'bagging':        
         data = extract_bagging(data, n_populations)
+    if mode == 'islands':
+        data = extract_best(data, n_populations)
     
     results = []
     for elem in data:
@@ -35,7 +37,7 @@ def parse_file(path=None, mode='bagging', n_populations=10):
     print_results(results, mode)
     write_results(path, results, mode)
     
-    move_file_to_used(path)
+    #move_file_to_used(path)
 
 
 def read_data_from_file(path=None):
@@ -59,6 +61,16 @@ def extract_bagging(data, n_populations):
             testbag.append(data[1].pop(i))
     return (data[0], data[1], learnbag, testbag)
 
+
+def extract_best(data, n_populations):
+    learnbest, testbest = [], []
+    for i in range(0, len(data[0]), n_populations):
+        best = sorted(data[0][i:i+n_populations], reverse=True)[0]
+        best_idx = data[0][i:i+n_populations].index(best)
+        learnbest.append(best)
+        testbest.append(data[1][i:i+n_populations][best_idx])
+    return (learnbest, testbest)
+    
 
 def print_results(results, mode):
     print('Среднее:\t{0}\t{1}'.format(results[0], results[1]))
