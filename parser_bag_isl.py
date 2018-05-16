@@ -87,7 +87,7 @@ def write_results(path, results, mode):
     f.write('{0}\nСреднее: {1} {2}\n'.format(dataset_name[:-4], results[0],
             results[1]))
     if mode == 'bagging':
-        f.write('Баггинг: {1} {2}\n'.format(results[2], results[3]))
+        f.write('Баггинг: {0} {1}\n'.format(results[2], results[3]))
     f.close()
 
 
