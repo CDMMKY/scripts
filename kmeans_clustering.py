@@ -7,8 +7,8 @@ Created on Sun Apr 15 17:30:00 2018
 
 import csv
 from collections import defaultdict
-
 from sklearn.cluster import KMeans
+
 
 def kmeans(path=None, n_clusters=3):
     if path is None:

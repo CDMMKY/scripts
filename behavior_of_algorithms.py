@@ -6,8 +6,7 @@ Created on Thu Apr 5 22:40:00 2018
 """
 
 import numpy as np
-#import matplotlib.pyplot as plt
-import os
+
 
 def graph_behavior(path=None, algorithms=None, dataname=None):
     if path is None or algorithms is None or dataname is None:
@@ -35,13 +34,3 @@ def graph_behavior(path=None, algorithms=None, dataname=None):
               round(algorithm_results[9] - algorithm_results[0], 2),
               round(algorithm_results[99] - algorithm_results[9], 2), 
               round(algorithm_results[-1] - algorithm_results[99], 2))
-    
-    #for algorithm_results in results:
-        #plt.plot(range(len(algorithm_results)), algorithm_results)
-    #plt.title(dataname)
-    #plt.xlabel('Итерации')
-    #plt.ylabel('Точность, %')
-    #plt.legend(algorithms)
-    #plt.savefig(path + 'images/' + '_'.join(algorithms) + '_' + dataname + 
-                #'.png', format='png')
-    #plt.show()
